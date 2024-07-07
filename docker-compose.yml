@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  app:
+    container_name: youapp-backend
+    image: youapp-backend:1.0.0
+    build: .
+    ports:
+      - 3000:3000
+    volumes: 
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - database
+
+  database:
+    container_name: database
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
