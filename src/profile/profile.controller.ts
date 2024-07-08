@@ -7,6 +7,7 @@ import { ProfileService } from './profile.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { AuthGuard } from '../auth/auth.guard';
+import e from 'express';
 
 function dateToHoroscopeSign(dateString) {
   const date = new Date(dateString);
@@ -58,34 +59,97 @@ function getHoroscopeSign(day, month) {
   }
 }
 
+// function dateToZodiacSign(dateString) {
+//   const date = new Date(dateString);
+//   const year = date.getFullYear();
+//   if(year%12 === 0) {
+//     return "Monkey";
+//   } else if (year%12 === 1) {
+//     return "Rooster";
+//   } else if (year%12 === 2) {
+//     return "Dog";
+//   } else if (year%12 === 3) {
+//     return "Pig";
+//   } else if (year%12 === 4) {
+//     return "Rat";
+//   } else if (year%12 === 5) {
+//     return "Ox";
+//   } else if (year%12 === 6) {
+//     return "Tiger";
+//   } else if (year%12 === 7) {
+//     return "Rabbit";
+//   } else if (year%12 === 8) {
+//     return "Dragon";
+//   } else if (year%12 === 9) {
+//     return "Snake";
+//   } else if (year%12 === 10) {
+//     return "Horse";
+//   } else {
+//     return "Sheep";
+//   }
+// }
+
 function dateToZodiacSign(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();
-  if(year%12 === 0) {
-    return "Monkey";
-  } else if (year%12 === 1) {
-    return "Rooster";
-  } else if (year%12 === 2) {
-    return "Dog";
-  } else if (year%12 === 3) {
-    return "Pig";
-  } else if (year%12 === 4) {
-    return "Rat";
-  } else if (year%12 === 5) {
-    return "Ox";
-  } else if (year%12 === 6) {
-    return "Tiger";
-  } else if (year%12 === 7) {
-    return "Rabbit";
-  } else if (year%12 === 8) {
-    return "Dragon";
-  } else if (year%12 === 9) {
-    return "Snake";
-  } else if (year%12 === 10) {
-    return "Horse";
-  } else {
-    return "Sheep";
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}${month}${day}`;
+  return getZodiacSign(formattedDate);
+}
+
+function getZodiacSign(formattedDate) {
+  var zodiacSigns = {
+    'rat':'Rat',
+    'ox':'Ox',
+    'tiger':'Tiger',
+    'rabbit':'Rabbit',
+    'dragon':'Dragon',
+    'snake':'Snake',
+    'horse':'Horse',
+    'goat':'Goat',
+    'monkey':'Monkey',
+    'dog':'Dog',
+    'rooster':'Rooster',
+    'boar':'Boar'
   }
+
+  if (formattedDate >= 19120218 && formattedDate <= 19130205) {
+    return zodiacSigns.rat;
+  }
+  else if (formattedDate >= 19130206 && formattedDate <= 19140125) { 
+    return zodiacSigns.ox;
+  }
+  else if(formattedDate >= 19140126 && formattedDate <= 19150213) {
+    return zodiacSigns.tiger;
+  }
+  else if(formattedDate >= 19150214 && formattedDate <= 19160202) {
+    return zodiacSigns.rabbit;
+  }
+  else if(formattedDate >= 19160203 && formattedDate <= 19170122) {
+    return zodiacSigns.dragon;
+  }
+  else if(formattedDate >= 19170123 && formattedDate <= 19180210) {
+    return zodiacSigns.snake;
+  } 
+  else if(formattedDate >= 19180211 && formattedDate <= 19190131) {
+    return zodiacSigns.horse;
+  } 
+  else if(formattedDate >= 19190201 && formattedDate <= 19200219) {
+    return zodiacSigns.goat;
+  } 
+  else if(formattedDate >= 19200220 && formattedDate <= 19210207) {
+    return zodiacSigns.monkey;
+  } 
+  else if(formattedDate >= 19210208 && formattedDate <= 19220127) {
+    return zodiacSigns.rooster;
+  } 
+  else if(formattedDate >= 19220128 && formattedDate <= 19230215) {
+    return zodiacSigns.dog;
+  } 
+  else if(formattedDate >= 19230216 && formattedDate <= 19240204) {
+    return zodiacSigns.boar;
+  } 
 }
 
 @Controller()
