@@ -66,7 +66,7 @@ If the file is not updated (unchecked "Send empty value" in Swagger), it means t
   "username": "teguh",
   "fullName": "Teguh Arifudin",
   "gender": "Male",
-  "birthday": "1983-10-11",
+  "birthday": "1921-10-07",
   "horoscope": "Libra",
   "zodiac": "Pig",
   "height": "",
