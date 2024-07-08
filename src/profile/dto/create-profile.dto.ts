@@ -6,21 +6,6 @@ enum Gender {
   Female = 'Female',
 }
 
-enum Horoscope {
-  Aries = 'Aries',
-  Taurus = 'Taurus',
-  Gemini = 'Gemini',
-  Cancer = 'Cancer',
-  Leo = 'Leo',
-  Virgo = 'Virgo',
-  Libra = 'Libra',
-  Scorpius = 'Scorpius',
-  Sagittarius = 'Sagittarius',
-  Capricornus = 'Capricornus',
-  Aquarius = 'Aquarius',
-  Pisces = 'Pisces',
-}
-
 enum Zodiac {
   Rat = 'Rat',
   Ox = 'Ox',
@@ -56,16 +41,12 @@ export class CreateProfileDto {
   @IsNotEmpty()
   gender: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '1983-10-11' })
   @IsString()
   @IsNotEmpty()
   birthday: string;
 
-  @ApiProperty({
-    enum: Horoscope,
-    isArray: true,
-    example: [Horoscope.Aries, Horoscope.Taurus, Horoscope.Gemini, Horoscope.Cancer, Horoscope.Leo, Horoscope.Virgo, Horoscope.Libra, Horoscope.Scorpius, Horoscope.Sagittarius, Horoscope.Capricornus, Horoscope.Aquarius, Horoscope.Pisces],
-  })
+  @ApiHideProperty()
   @IsString()
   @IsOptional()
   horoscope: string;
