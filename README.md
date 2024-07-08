@@ -55,7 +55,7 @@ User A
 ```
 
 ### Create Profile with validation, and authorization
-The registered username cannot be used twice.
+The registered username cannot be used twice. And implement Birthday date ​​to Horoscope and Zodiac values.
 
 ### Update Profile with Register/user id, validation, and authorization
 If the file is not updated (unchecked "Send empty value" in Swagger), it means the old file is still same.
