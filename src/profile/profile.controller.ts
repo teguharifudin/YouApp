@@ -58,6 +58,36 @@ function getHoroscopeSign(day, month) {
   }
 }
 
+function dateToZodiacSign(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  if(year%12 === 0) {
+    return "Monkey";
+  } else if (year%12 === 1) {
+    return "Rooster";
+  } else if (year%12 === 2) {
+    return "Dog";
+  } else if (year%12 === 3) {
+    return "Pig";
+  } else if (year%12 === 4) {
+    return "Rat";
+  } else if (year%12 === 5) {
+    return "Ox";
+  } else if (year%12 === 6) {
+    return "Tiger";
+  } else if (year%12 === 7) {
+    return "Rabbit";
+  } else if (year%12 === 8) {
+    return "Dragon";
+  } else if (year%12 === 9) {
+    return "Horse";
+  } else if (year%12 === 10) {
+    return "Horse";
+  } else {
+    return "Sheep";
+  }
+}
+
 @Controller()
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
@@ -81,6 +111,7 @@ export class ProfileController {
     createProfileDto.file = file.filename
     createProfileDto.username = req.user.username
     createProfileDto.horoscope = dateToHoroscopeSign(req.body.birthday)
+    createProfileDto.zodiac = dateToZodiacSign(req.body.birthday)
     return this.profileService.create(createProfileDto);
   }
 
@@ -110,6 +141,7 @@ export class ProfileController {
       updateProfileDto.file = file.filename
     }
     updateProfileDto.horoscope = dateToHoroscopeSign(req.body.birthday)
+    updateProfileDto.zodiac = dateToZodiacSign(req.body.birthday)
     return this.profileService.update(id, updateProfileDto);
   }
 }
