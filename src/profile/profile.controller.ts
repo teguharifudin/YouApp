@@ -109,6 +109,7 @@ export class ProfileController {
     if(file){
       updateProfileDto.file = file.filename
     }
+    updateProfileDto.horoscope = dateToHoroscopeSign(req.body.birthday)
     return this.profileService.update(id, updateProfileDto);
   }
 }
