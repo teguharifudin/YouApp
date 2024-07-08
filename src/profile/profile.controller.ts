@@ -80,7 +80,7 @@ function dateToZodiacSign(dateString) {
   } else if (year%12 === 8) {
     return "Dragon";
   } else if (year%12 === 9) {
-    return "Horse";
+    return "Snake";
   } else if (year%12 === 10) {
     return "Horse";
   } else {
