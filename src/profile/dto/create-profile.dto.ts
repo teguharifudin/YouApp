@@ -26,7 +26,7 @@ export class CreateProfileDto {
   @IsNotEmpty()
   gender: string;
 
-  @ApiProperty({ example: '1983-10-11' })
+  @ApiProperty({ example: '1921-10-07' })
   @IsString()
   @IsNotEmpty()
   birthday: string;
