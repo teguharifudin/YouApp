@@ -6,21 +6,6 @@ enum Gender {
   Female = 'Female',
 }
 
-enum Zodiac {
-  Rat = 'Rat',
-  Ox = 'Ox',
-  Tiger = 'Tiger',
-  Rabbit = 'Rabbit',
-  Dragon = 'Dragon',
-  Snake = 'Snake',
-  Horse = 'Horse',
-  Goat = 'Goat',
-  Monkey = 'Monkey',
-  Rooster = 'Rooster',
-  Dog = 'Dog',
-  Pig = 'Pig',
-}
-
 export class CreateProfileDto {
   
   @ApiHideProperty()
@@ -51,11 +36,7 @@ export class CreateProfileDto {
   @IsOptional()
   horoscope: string;
 
-  @ApiProperty({
-    enum: Zodiac,
-    isArray: true,
-    example: [Zodiac.Rat, Zodiac.Ox, Zodiac.Tiger, Zodiac.Rabbit, Zodiac.Dragon, Zodiac.Snake, Zodiac.Horse, Zodiac.Goat, Zodiac.Monkey, Zodiac.Rooster, Zodiac.Dog, Zodiac.Pig],
-  })
+  @ApiHideProperty()
   @IsString()
   @IsOptional()
   zodiac: string;
